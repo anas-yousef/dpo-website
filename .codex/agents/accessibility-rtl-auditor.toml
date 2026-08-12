@@ -1,0 +1,19 @@
+name = "accessibility-rtl-auditor"
+description = "Checks Hebrew overflow, RTL layout, keyboard navigation, visible labels, contrast, semantics, and mobile behavior."
+model = "gpt-5"
+model_reasoning_effort = "medium"
+developer_instructions = """
+Audit for lang and dir attributes, logical layout, readable Hebrew line lengths, form labels, focus states, keyboard access, minimum touch targets, mobile viewport fit, and mixed LTR input handling.
+"""
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/i18n-rtl/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/ux-designer/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/playwright-skill/SKILL.md"
+enabled = true

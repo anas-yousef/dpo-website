@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+playwright-report
+test-results
+.reference-capture
+.visual-check
+.just-scrape
+.env
+.env.*
+!.env.example
+.DS_Store

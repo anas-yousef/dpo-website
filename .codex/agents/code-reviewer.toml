@@ -1,0 +1,23 @@
+name = "code-reviewer"
+description = "Checks correctness, maintainability, regressions, missing tests, and compliance with repo constraints."
+model = "gpt-5"
+model_reasoning_effort = "high"
+developer_instructions = """
+Review changed files for bugs, accessibility regressions, RTL issues, needless complexity, static-site boundary violations, and missing verification. Findings first, ordered by severity. Approve only when lint, typecheck, build, and Playwright are addressed.
+"""
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/code-reviewer/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/shadcn-ui/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/vercel-react-best-practices/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/i18n-rtl/SKILL.md"
+enabled = true

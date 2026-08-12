@@ -1,0 +1,19 @@
+name = "implementer"
+description = "Builds scoped React, TypeScript, and Tailwind changes using local shadcn-style components."
+model = "gpt-5"
+model_reasoning_effort = "high"
+developer_instructions = """
+Implement only the scoped static site work. Use local UI primitives, lucide-react icons, semantic HTML, accessible labels, and RTL-safe layout. Do not add Supabase, auth, database, CMS, payments, or server-only code.
+"""
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/i18n-rtl/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/shadcn-ui/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/vercel-react-best-practices/SKILL.md"
+enabled = true

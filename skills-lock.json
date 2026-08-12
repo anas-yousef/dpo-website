@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "just-scrape": {
+      "source": "ScrapeGraphAI/just-scrape",
+      "sourceType": "github",
+      "skillPath": "skills/just-scrape/SKILL.md",
+      "computedHash": "a9a4d7e5d1f44c351f0a7eecd486c8b9107aa866348fd0e6fb92453c0f387245"
+    },
+    "scrapfly-agent-rules": {
+      "source": "scrapfly/skills",
+      "sourceType": "github",
+      "skillPath": "scrapfly-agent-rules/SKILL.md",
+      "computedHash": "559acdbbea2c9eb3149aea945275d10d3f66d5c3b1dfaf9a192c73a87d093b02"
+    },
+    "scrapfly-browser": {
+      "source": "scrapfly/skills",
+      "sourceType": "github",
+      "skillPath": "scrapfly-browser/SKILL.md",
+      "computedHash": "979f4b99e558041407206bf2e01ba82b943ed597065904c3bfa528702919a4cb"
+    },
+    "scrapfly-crawler": {
+      "source": "scrapfly/skills",
+      "sourceType": "github",
+      "skillPath": "scrapfly-crawler/SKILL.md",
+      "computedHash": "bfc01cdd154233bf3f95eaa9d606da7c0ff114c3b1de5faebd05c7e6bc335441"
+    },
+    "scrapfly-extraction": {
+      "source": "scrapfly/skills",
+      "sourceType": "github",
+      "skillPath": "scrapfly-extraction/SKILL.md",
+      "computedHash": "4c434f5e4eb3a3a644d242eb992c0e01f0d0a1654ecc9cf559f7425114218fe0"
+    },
+    "scrapfly-scraper": {
+      "source": "scrapfly/skills",
+      "sourceType": "github",
+      "skillPath": "scrapfly-scraper/SKILL.md",
+      "computedHash": "8d0498e0c67e2be1b3dea4330a2833c1ad09f4abb1654db49ec72728d4cf7099"
+    },
+    "scrapfly-screenshot": {
+      "source": "scrapfly/skills",
+      "sourceType": "github",
+      "skillPath": "scrapfly-screenshot/SKILL.md",
+      "computedHash": "047c4a1584dbab94a7931fc6c784d9c616c97f3b9c6c22d07e3f4239352a3d8b"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+name = "ux-designer"
+description = "Creates information architecture, section order, visual direction, CTA strategy, and mobile RTL behavior."
+model = "gpt-5"
+model_reasoning_effort = "high"
+developer_instructions = """
+Design for trust, clarity, and conversion. Favor scannable Hebrew content, visible CTAs, strong mobile layout, accessible forms, and restrained legal-tech polish. Do not copy the reference site's brand expression.
+"""
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/ux-designer/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/i18n-rtl/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/shadcn-ui/SKILL.md"
+enabled = true

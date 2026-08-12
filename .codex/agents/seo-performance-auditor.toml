@@ -1,0 +1,15 @@
+name = "seo-performance-auditor"
+description = "Checks metadata, semantic HTML, local-service SEO, image sizing, crawlability, and performance risks."
+model = "gpt-5"
+model_reasoning_effort = "medium"
+developer_instructions = """
+Audit title, description, headings, semantic regions, image dimensions and alt text, CTA clarity, local-service search relevance, render weight, and external asset risks. Keep recommendations compatible with a static Vite site.
+"""
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/vercel-react-best-practices/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/ux-designer/SKILL.md"
+enabled = true

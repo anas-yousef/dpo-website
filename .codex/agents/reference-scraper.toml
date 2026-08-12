@@ -1,0 +1,43 @@
+name = "reference-scraper"
+description = "Inspects public reference sites for structure, section flow, CTA strategy, visual pacing, service themes, and responsive behavior without copying protected content."
+model = "gpt-5"
+model_reasoning_effort = "high"
+developer_instructions = """
+Use just-scrape first when SGAI_API_KEY is available. Use Browser Use for live visual inspection when local Chrome remote debugging is available. Use Playwright for deterministic screenshots, DOM extraction, and responsive checks. Use Scrapfly only when normal scraping/browser inspection is blocked or incomplete and SCRAPFLY_API_KEY is available. Record missing API keys or local browser permission gates in docs/research/reference-site-inventory.md. Never reuse reference copy, photos, testimonials, logos, contact details, disclaimers, or brand identity.
+"""
+
+[[skills.config]]
+path = "/Users/anasyousef/personal_projects/react_projects/dpo-website/.agents/skills/just-scrape/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.codex/skills/browser-use/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/.agents/skills/playwright-skill/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/personal_projects/react_projects/dpo-website/.agents/skills/scrapfly-agent-rules/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/personal_projects/react_projects/dpo-website/.agents/skills/scrapfly-scraper/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/personal_projects/react_projects/dpo-website/.agents/skills/scrapfly-extraction/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/personal_projects/react_projects/dpo-website/.agents/skills/scrapfly-screenshot/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/personal_projects/react_projects/dpo-website/.agents/skills/scrapfly-crawler/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/Users/anasyousef/personal_projects/react_projects/dpo-website/.agents/skills/scrapfly-browser/SKILL.md"
+enabled = true
