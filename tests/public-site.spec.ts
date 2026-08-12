@@ -9,6 +9,13 @@ test.describe("Hebrew DPO public website", () => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
       "ממונה הגנת פרטיות",
     );
+    await expect
+      .poll(async () =>
+        page
+          .getByAltText("עמדת עבודה משפטית-טכנולוגית עם לוח בקרה לאבטחת מידע ופרטיות")
+          .evaluate((image) => (image as HTMLImageElement).naturalWidth),
+      )
+      .toBeGreaterThan(0);
 
     for (const sectionId of [
       "services",

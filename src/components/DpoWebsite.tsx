@@ -33,6 +33,8 @@ const navItems = [
   { label: "קשר", href: "#contact" },
 ];
 
+const heroImageSrc = `${import.meta.env.BASE_URL}images/dpo-compliance-hero.png`;
+
 const services = [
   {
     title: "DPO חיצוני וליווי שוטף",
@@ -266,7 +268,7 @@ function Hero() {
         <div className="relative">
           <div className="overflow-hidden rounded-lg border border-border bg-muted shadow-soft">
             <img
-              src="/images/dpo-compliance-hero.png"
+              src={heroImageSrc}
               alt="עמדת עבודה משפטית-טכנולוגית עם לוח בקרה לאבטחת מידע ופרטיות"
               className="aspect-[16/11] w-full object-cover"
               width="1680"
