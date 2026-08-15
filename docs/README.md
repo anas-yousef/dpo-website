@@ -9,7 +9,7 @@ This repo contains a static Hebrew RTL website for a DPO / privacy-law / cyberse
 - shadcn/ui-style local primitives
 - lucide-react icons
 - Hebrew-first RTL layout
-- Static lead form shell
+- Static contact section with real contact channel pending
 - Playwright smoke and visual sanity tests
 
 ## Out of scope

@@ -3,6 +3,7 @@ import {
   ArrowUpLeft,
   Building2,
   CheckCircle2,
+  ClipboardCheck,
   FileCheck2,
   Fingerprint,
   Gauge,
@@ -15,96 +16,120 @@ import {
   Phone,
   Scale,
   ShieldCheck,
-  Sparkles,
   X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+
+const basePath = import.meta.env.BASE_URL;
+const heroImageSrc = `${basePath}images/amal-bransi-dpo.jpg`;
+const privacyHref = `${basePath}privacy/index.html`;
+const accessibilityHref = `${basePath}accessibility/index.html`;
 
 const navItems = [
   { label: "שירותים", href: "#services" },
   { label: "מומחיות", href: "#expertise" },
-  { label: "סיכונים", href: "#risk" },
+  { label: "תיקון 13", href: "#risk" },
   { label: "בדיקה עצמית", href: "#assessment" },
+  { label: "לקוחות", href: "#clients" },
   { label: "קשר", href: "#contact" },
 ];
 
-const heroImageSrc = `${import.meta.env.BASE_URL}images/dpo-compliance-hero.png`;
-
 const services = [
   {
-    title: "DPO חיצוני וליווי שוטף",
+    title: "ממונה הגנת פרטיות חיצוני (DPO)",
     description:
-      "ניהול חובות פרטיות, תיעוד החלטות, מענה לפניות נושאי מידע והובלת תהליך ציות שאפשר לעבוד איתו ביום יום.",
+      "מינוי ממונה כנדרש בתיקון 13, ניהול חובות הפרטיות, תיעוד החלטות, מענה לפניות נושאי מידע ודיווח להנהלה.",
     icon: Fingerprint,
   },
   {
-    title: "מיפוי מידע וסיכוני פרטיות",
+    title: "מיפוי מאגרי מידע והערכת סיכונים",
     description:
-      "תמונה ברורה של איזה מידע נאסף, איפה הוא נשמר, מי נוגע בו ומה דורש טיפול לפני ביקורת או אירוע.",
+      "מסמך הגדרות מאגר לפי תקנה 2, סיווג רמת אבטחה, מיפוי מערכות והרשאות, וסקר סיכונים לפי תקנות אבטחת מידע.",
     icon: Gauge,
   },
   {
-    title: "מדיניות, נהלים ומסמכי אתר",
+    title: "מדיניות, נהלים ומסמכי חובה",
     description:
-      "מסמכי פרטיות, נהלי אבטחת מידע, הסכמות, הסכמי ספקים ותבניות עבודה בניסוח מקורי וברור.",
+      "ערכת נהלי אבטחת מידע והגנת פרטיות, נוהל תגובה לאירוע, נוהל זכויות נושא מידע, מסמכי הסכמה ומדיניות פרטיות לאתר.",
     icon: FileCheck2,
   },
   {
-    title: "היערכות לאירועי סייבר",
+    title: "היערכות ותגובה לאירועי אבטחה",
     description:
-      "תרחישי תגובה, חובת דיווח, חלוקת אחריות בין משפט, IT והנהלה, ותיעוד מסודר של צעדי טיפול.",
+      "תרחישי תגובה, חובת הדיווח לרשות הגנת הפרטיות ולנושאי המידע, חלוקת אחריות בין הייעוץ המשפטי, IT וההנהלה, ותיעוד מלא של הטיפול.",
     icon: ShieldCheck,
   },
   {
-    title: "בקרת ספקים ומעבדי מידע",
+    title: "בקרת ספקים ומיקור חוץ",
     description:
-      "בדיקת חוזים, הרשאות, העברות מידע ושרשרת ספקים כדי לצמצם חשיפה שלא תמיד רואים במבט ראשון.",
+      "נספחי הגנת פרטיות לפי תקנה 15, בדיקת הרשאות והעברות מידע, מיפוי שרשרת ספקים והתקשרויות קיימות.",
     icon: Building2,
   },
   {
     title: "הדרכות מנהלים ועובדים",
     description:
-      "הדרכות קצרות ומעשיות שמתרגמות חובות משפטיות להתנהלות בשטח, בלי להפוך את הארגון למחלקה משפטית.",
+      "הדרכות קצרות ומעשיות בעברית ובערבית, שמתרגמות את החובות להתנהלות יומיומית ומצמצמות טעויות אנוש.",
     icon: GraduationCap,
   },
 ];
 
 const riskPoints = [
-  "מאגר לקוחות גדל בלי תיעוד של מטרות שימוש והרשאות.",
-  "טפסים באתר או במערכת SaaS אוספים מידע ללא שפה ברורה למשתמש.",
-  "ספקים חיצוניים מקבלים גישה למידע רגיש בלי בקרה תקופתית.",
-  "אירוע אבטחה קטן הופך למשבר כי אין תהליך דיווח והחלטה מסודר.",
+  "אין תיק ציות שמציג מיפוי מאגרים, מטרות שימוש והרשאות בצורה מסודרת.",
+  "מסמך הגדרות מאגר או סקר סיכונים אינם מעודכנים לפעילות העסקית בפועל.",
+  "ספקים ומיקור חוץ מקבלים גישה למידע בלי נספחי פרטיות ובקרה תקופתית.",
+  "אירוע אבטחה מתחיל בלי תהליך דיווח, תיעוד וחלוקת אחריות ברורה.",
 ];
 
 const assessmentQuestions = [
-  "האם ברור לכם מי אחראי בארגון על החלטות פרטיות ואבטחת מידע?",
-  "האם יש מיפוי עדכני של מאגרי מידע, מערכות וספקים?",
-  "האם כל טופס איסוף מידע מסביר למה המידע נדרש ומה ייעשה בו?",
-  "האם יש תהליך מסודר למחיקה, תיקון או עיון במידע אישי?",
-  "האם הסכמי הספקים שלכם מכסים אבטחה, סודיות והעברות מידע?",
-  "האם צוותים יודעים מה לעשות ב-24 השעות הראשונות של אירוע אבטחה?",
+  "האם ברור מי אחראי בארגון על החלטות פרטיות ואבטחת מידע?",
+  "האם יש מיפוי עדכני של מאגרי מידע, מערכות, הרשאות וספקים?",
+  "האם מסמכי האתר וטפסי האיסוף כוללים יידוע ברור ומדויק?",
+  "האם קיימים נהלים לזכויות נושא מידע: עיון, תיקון ומחיקה?",
+  "האם התקשרויות עם ספקים כוללות נספחי פרטיות, אבטחה והעברות מידע?",
+  "האם הצוותים יודעים מה לעשות ב-24 השעות הראשונות של אירוע אבטחה?",
 ];
 
-const proofItems = [
+const clientTypes = [
   {
-    quote:
-      "קיבלנו סדר במקום רשימת מטלות מפחידה. סוף סוף ברור מה חשוב עכשיו ומה יכול לחכות.",
-    role: "מנהלת תפעול, חברת SaaS",
+    title: "רשויות מקומיות ומועצות",
+    icon: Landmark,
   },
   {
-    quote:
-      "התהליך היה ענייני, מדויק ולא תיאורטי. יצאנו עם מסמכים, אחריות פנימית ותוכנית עבודה.",
-    role: "מנכ״ל, שירותים מקצועיים",
+    title: "תאגידי מים וביוב ותאגידים עירוניים",
+    icon: Building2,
   },
   {
-    quote:
-      "ההדרכה גרמה לצוות להבין פרטיות בלי להיבהל ממנה. זה הוריד התנגדות והעלה שיתוף פעולה.",
-    role: "סמנכ״לית משאבי אנוש",
+    title: "גופים המחזיקים במידע רפואי ומידע רגיש",
+    icon: ShieldCheck,
+  },
+  {
+    title: "משרדי עורכי דין ובעלי מקצוע",
+    icon: Scale,
+  },
+  {
+    title: "חברות טכנולוגיה וספקי SaaS",
+    icon: ClipboardCheck,
+  },
+];
+
+const contactDetails = [
+  {
+    label: "דוא״ל",
+    value: "להשלים",
+    icon: Mail,
+  },
+  {
+    label: "טלפון",
+    value: "להשלים",
+    icon: Phone,
+  },
+  {
+    label: "לינקדאין",
+    value: "להשלים",
+    icon: MessageSquare,
   },
 ];
 
@@ -148,9 +173,11 @@ function Header() {
             <ShieldCheck className="size-5" aria-hidden="true" />
           </span>
           <span className="leading-tight">
-            <span className="block text-base">DPO פרטיות וסייבר</span>
+            <span className="block text-base" dir="ltr">
+              AMLAWTECH — YOUR DPO
+            </span>
             <span className="block text-xs font-semibold text-muted-foreground">
-              משפט, אבטחה וציות
+              אמל בראנסי, ממונה הגנת פרטיות
             </span>
           </span>
         </a>
@@ -160,7 +187,7 @@ function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-md px-4 py-2 text-sm font-bold text-muted-foreground transition hover:bg-muted hover:text-foreground"
+              className="rounded-md px-3 py-2 text-sm font-bold text-muted-foreground transition hover:bg-muted hover:text-foreground xl:px-4"
             >
               {item.label}
             </a>
@@ -219,18 +246,23 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-card">
-      <div className="container grid min-h-[calc(100svh-4rem)] items-center gap-10 py-12 lg:grid-cols-[1fr_0.92fr] lg:py-16">
-        <div className="space-y-8">
-          <Badge className="border-brass-500/30 bg-brass-50 text-brass-700">
-            DPO, פרטיות, סייבר ורגולציה לעסקים בישראל
+      <div className="container grid min-h-[calc(88svh-4rem)] items-center gap-10 py-12 lg:grid-cols-[0.95fr_1.05fr] lg:py-14">
+        <div className="space-y-7">
+          <Badge className="border-brass-500/30 bg-brass-50 text-brass-700" dir="ltr">
+            AMLAWTECH — YOUR DPO
           </Badge>
           <div className="space-y-5">
             <h1 className="text-balance text-4xl font-extrabold leading-tight text-foreground sm:text-5xl lg:text-6xl">
-              ממונה הגנת פרטיות שמחבר משפט, סייבר ותפעול
+              אמל בראנסי | ממונה הגנת פרטיות (DPO)
             </h1>
-            <p className="max-w-2xl text-xl leading-9 text-muted-foreground">
-              ליווי נקי וברור לארגונים שצריכים לעמוד בדרישות פרטיות ואבטחת
-              מידע, בלי לעצור מכירות, מוצר או שירות לקוחות.
+            <p className="max-w-2xl text-xl font-bold leading-9 text-primary">
+              ליווי רשויות מקומיות, גופים ציבוריים וארגונים לעמידה בתיקון 13
+              לחוק הגנת הפרטיות
+            </p>
+            <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
+              תיקון 13 נכנס לתוקף והרחיב את חובות הארגון ואת סמכויות האכיפה של
+              רשות הגנת הפרטיות. אני מלווה ארגונים משלב המיפוי ועד תיק ציות
+              מסודר שמחזיק גם ביום ביקורת — בעברית ובערבית.
             </p>
           </div>
 
@@ -242,21 +274,21 @@ function Hero() {
               </a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href="#services">ראו תחומי ליווי</a>
+              <a href="#services">תחומי הליווי</a>
             </Button>
           </div>
 
           <dl className="grid gap-4 sm:grid-cols-3">
             {[
-              ["48 שעות", "למיפוי ראשוני"],
-              ["6 תחומים", "שירותי פרטיות וסייבר"],
-              ["עברית RTL", "תוכן ברור לצוותים"],
+              ["מענה ראשוני", "תוך 48 שעות"],
+              ["עברית וערבית", "ליווי דו-לשוני"],
+              ["רשויות · תאגידים", "וגופים ציבוריים"],
             ].map(([value, label]) => (
               <div
                 key={value}
                 className="rounded-lg border border-border bg-background p-4"
               >
-                <dt className="text-2xl font-extrabold text-primary">{value}</dt>
+                <dt className="text-xl font-extrabold text-primary">{value}</dt>
                 <dd className="mt-1 text-sm font-semibold text-muted-foreground">
                   {label}
                 </dd>
@@ -265,23 +297,24 @@ function Hero() {
           </dl>
         </div>
 
-        <div className="relative">
+        <div className="relative mx-auto w-full max-w-[520px]">
           <div className="overflow-hidden rounded-lg border border-border bg-muted shadow-soft">
             <img
               src={heroImageSrc}
-              alt="עמדת עבודה משפטית-טכנולוגית עם לוח בקרה לאבטחת מידע ופרטיות"
-              className="aspect-[16/11] w-full object-cover"
-              width="1680"
-              height="945"
+              alt="אמל בראנסי, ממונה הגנת פרטיות DPO"
+              className="aspect-[4/5] w-full object-cover object-top"
+              width="1066"
+              height="1600"
+              fetchPriority="high"
             />
           </div>
           <div className="absolute bottom-4 start-4 max-w-xs rounded-lg border border-border bg-card/95 p-4 shadow-soft backdrop-blur">
             <div className="flex items-center gap-2 text-sm font-extrabold text-primary">
               <LockKeyhole className="size-4" aria-hidden="true" />
-              מוכנות שמחזיקה גם ביום ביקורת
+              תיק ציות שמחזיק גם ביום ביקורת
             </div>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              מיפוי, החלטות, מסמכים והדרכה במקום אחד מסודר.
+              מיפוי, החלטות, נהלים, הדרכות ותיעוד במקום אחד.
             </p>
           </div>
         </div>
@@ -334,15 +367,15 @@ function Expertise() {
           align="start"
           eyebrow="מומחיות"
           title="פרטיות היא לא רק מסמך באתר. היא מערכת עבודה."
-          description="הגישה המקצועית משלבת הבנה משפטית, ראייה תפעולית ושפה טכנולוגית. המטרה היא לא להבטיח אפס סיכון, אלא לבנות ארגון שיודע להסביר, להוכיח ולתקן."
+          description="הגישה משלבת רקע משפטי, ראייה תפעולית ושפה טכנולוגית, ומבוססת על הנחיות רשות הגנת הפרטיות ועל הנחיות מערך הסייבר הלאומי. המטרה אינה אפס סיכון, אלא ארגון שיודע להסביר, להוכיח ולתקן."
         />
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
             {
               icon: Scale,
-              title: "משפטי",
-              text: "פרשנות חובות, מסמכים, חוזים, דיווחים ומענה לבקשות.",
+              title: "רקע משפטי",
+              text: "הבנת חובות פרטיות, מסמכי עבודה, דיווחים ומענה לבקשות.",
             },
             {
               icon: ShieldCheck,
@@ -387,15 +420,16 @@ function RiskEducation() {
       <div className="container grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
         <div className="space-y-5">
           <Badge className="border-brass-500/40 bg-brass-500/15 text-brass-100">
-            למה זה דחוף
+            תיקון 13
           </Badge>
           <h2 className="text-balance text-3xl font-extrabold leading-tight sm:text-4xl">
-            רוב סיכוני הפרטיות מתחילים בפער קטן בין מה שהעסק עושה לבין מה שהוא יודע להוכיח
+            רוב סיכוני הפרטיות מתחילים בפער קטן בין מה שהארגון עושה לבין מה
+            שהוא יודע להוכיח
           </h2>
           <p className="text-lg leading-8 text-background/75">
             אתר, CRM, מערכת דיוור, טופס מועמדים או ספק ענן יכולים להיות תקינים
-            בפני עצמם. הבעיה מתחילה כשאין תמונה אחת של איסוף, הרשאות, שמירה
-            ומחיקה.
+            בפני עצמם. הבעיה מתחילה כשאין תמונה אחת של איסוף, הרשאות, שמירה,
+            מחיקה, ספקים וחובת דיווח.
           </p>
           <Button asChild variant="secondary">
             <a href="#assessment">עברו לבדיקה עצמית</a>
@@ -427,7 +461,7 @@ function Assessment() {
         <SectionIntro
           eyebrow="בדיקה עצמית"
           title="שש שאלות שמגלות אם הפרטיות מנוהלת או רק כתובה"
-          description="לא צריך לענות כאן בטופס. אם יותר משתי שאלות מרגישות לא סגורות, כדאי לבצע מיפוי קצר לפני שהלחץ מגיע מבחוץ."
+          description="אם יותר משתי שאלות מרגישות לא סגורות, כדאי לבצע מיפוי קצר לפני שהלחץ מגיע מבחוץ."
         />
 
         <div className="mx-auto grid max-w-4xl gap-3">
@@ -449,30 +483,32 @@ function Assessment() {
   );
 }
 
-function Proof() {
+function ClientTypes() {
   return (
-    <section className="section-pad bg-card">
+    <section id="clients" className="section-pad bg-card">
       <div className="container space-y-12">
         <SectionIntro
-          eyebrow="הוכחה חברתית"
-          title="מקום שמור לעדויות מקוריות של ה-DPO שלכם"
-          description="הטקסט כאן הוא פלייסהולדר מקורי בלבד. כשהאתר יקבל לקוחות אמיתיים, נחליף אותו בעדויות מאושרות ובמדדי אמון שניתן לפרסם."
+          eyebrow="עם מי אני עובדת"
+          title="ליווי לארגונים שמנהלים מידע רגיש, ציבורי או תפעולי"
+          description="ליווי שוטף של רשויות מקומיות, תאגידים עירוניים, גופים ציבוריים ועסקים פרטיים — מארגונים המנהלים מאגרי מידע רגישים ועד גופים המחזיקים במידע עבור צדדים שלישיים."
         />
 
-        <div className="grid gap-4 lg:grid-cols-3">
-          {proofItems.map((item) => (
-            <Card key={item.role} className="shadow-none">
-              <CardContent className="p-6">
-                <Sparkles className="size-6 text-brass-500" aria-hidden="true" />
-                <blockquote className="mt-5 text-lg font-semibold leading-8">
-                  “{item.quote}”
-                </blockquote>
-                <p className="mt-5 text-sm font-bold text-muted-foreground">
-                  {item.role}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {clientTypes.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={item.title}
+                className="flex items-center gap-4 rounded-lg border border-border bg-background p-5"
+              >
+                <span className="grid size-11 shrink-0 place-items-center rounded-md bg-primary/10 text-primary">
+                  <Icon className="size-5" aria-hidden="true" />
+                </span>
+                <p className="font-extrabold leading-7">{item.title}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -480,115 +516,62 @@ function Proof() {
 }
 
 function Contact() {
-  const [status, setStatus] = useState("");
-
   return (
     <section id="contact" className="section-pad bg-background">
-      <div className="container grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+      <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div className="space-y-6">
           <Badge className="border-primary/20 bg-primary/5 text-primary">
             יצירת קשר
           </Badge>
           <h2 className="text-balance text-3xl font-extrabold leading-tight sm:text-4xl">
-            מתחילים בשיחת אבחון קצרה ומסודרת
+            מתחילים בשיחת אבחון קצרה
           </h2>
           <p className="text-lg leading-8 text-muted-foreground">
-            ספרו בקצרה מה סוג הארגון, אילו מערכות מידע פעילות ומה מטריד אתכם:
-            ביקורת, לקוח גדול, אירוע אבטחה, אתר חדש או פשוט רצון לסדר את
-            התשתית.
+            ספרו בקצרה מהו סוג הארגון, אילו מערכות מידע פעילות ומה מטריד אתכם
+            כרגע: היערכות לתיקון 13, ביקורת, דרישה מלקוח גדול, אירוע אבטחה או
+            פשוט רצון לסדר את התשתית.
           </p>
-
-          <div className="grid gap-3">
-            <div className="flex items-center gap-3 text-sm font-bold">
-              <Mail className="size-5 text-primary" aria-hidden="true" />
-              <span>דוא״ל וטלפון יוגדרו בשלב החיבור העסקי</span>
-            </div>
-            <div className="flex items-center gap-3 text-sm font-bold">
-              <Phone className="size-5 text-primary" aria-hidden="true" />
-              <span>הטופס סטטי כרגע ואינו שולח מידע לשרת</span>
-            </div>
-          </div>
         </div>
 
         <Card className="shadow-soft">
           <CardHeader>
-            <h3 className="text-2xl font-extrabold">טופס פנייה</h3>
+            <h3 className="text-2xl font-extrabold">פרטי קשר</h3>
             <p className="leading-7 text-muted-foreground">
-              שדות לדוגמה בלבד. אין שמירת מידע או שליחה חיצונית בגרסה הסטטית.
+              פרטי ההתקשרות יושלמו לפני העלייה הסופית. אין באתר טופס פעיל, כדי
+              לא ליצור רושם של שליחת פנייה ולא לאסוף מידע ללא הודעת יידוע.
             </p>
           </CardHeader>
-          <CardContent>
-            <form
-              className="grid gap-5"
-              onSubmit={(event) => {
-                event.preventDefault();
-                setStatus("הטופס מוכן לחיבור, אך בגרסה הזו הוא לא שולח מידע.");
-              }}
-            >
-              <div className="grid gap-2">
-                <label className="text-sm font-bold" htmlFor="full-name">
-                  שם מלא
-                </label>
-                <Input id="full-name" name="full-name" autoComplete="name" />
-              </div>
-              <div className="grid gap-2">
-                <label className="text-sm font-bold" htmlFor="company">
-                  ארגון ותפקיד
-                </label>
-                <Input id="company" name="company" autoComplete="organization" />
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="grid gap-2">
-                  <label className="text-sm font-bold" htmlFor="email">
-                    דוא״ל
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    dir="ltr"
-                    className="text-left"
-                    autoComplete="email"
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <label className="text-sm font-bold" htmlFor="phone">
-                    טלפון
-                  </label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    dir="ltr"
-                    className="text-left"
-                    autoComplete="tel"
-                  />
-                </div>
-              </div>
-              <div className="grid gap-2">
-                <label className="text-sm font-bold" htmlFor="message">
-                  במה כדאי להתמקד בשיחה?
-                </label>
-                <Textarea id="message" name="message" />
-              </div>
-              <label className="flex items-start gap-3 text-sm leading-6 text-muted-foreground">
-                <input
-                  type="checkbox"
-                  className="mt-1 size-4 rounded border-border accent-primary"
-                />
-                <span>
-                  אני מבין/ה שזהו טופס סטטי ראשוני, ושחיבור לשליחה או אחסון
-                  יוגדר רק לאחר החלטה מפורשת.
-                </span>
-              </label>
-              <Button type="submit" className="w-full sm:w-fit">
-                שליחת פנייה לבדיקה
-                <ArrowUpLeft aria-hidden="true" />
-              </Button>
-              <p className="min-h-6 text-sm font-bold text-primary" aria-live="polite">
-                {status}
+          <CardContent className="space-y-5">
+            <div className="grid gap-3">
+              {contactDetails.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.label}
+                    className="flex items-center justify-between gap-4 rounded-lg border border-border bg-muted/45 p-4"
+                  >
+                    <div className="flex items-center gap-3 font-bold">
+                      <Icon className="size-5 text-primary" aria-hidden="true" />
+                      <span>{item.label}</span>
+                    </div>
+                    <span className="font-extrabold text-muted-foreground">
+                      {item.value}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="rounded-lg border border-primary/20 bg-primary/5 p-5">
+              <p className="font-extrabold text-primary">
+                לאחר קבלת פרטי הקשר
               </p>
-            </form>
+              <p className="mt-2 leading-7 text-muted-foreground">
+                אפשר להחליף את הכרטיסים בכפתורי דוא״ל, וואטסאפ ולינקדאין, או
+                לחבר טופס אמיתי עם הודעת יידוע לפי סעיף 11 לחוק ותיבת הסכמה.
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -601,20 +584,22 @@ function Footer() {
     <footer className="border-t border-border bg-card">
       <div className="container flex flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="font-extrabold">DPO פרטיות וסייבר</p>
+          <p className="font-extrabold" dir="ltr">
+            AMLAWTECH — YOUR DPO
+          </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            אתר סטטי ראשוני לשירותי פרטיות, סייבר וציות.
+            אמל בראנסי, ממונה הגנת פרטיות
           </p>
         </div>
         <nav className="flex flex-wrap gap-4 text-sm font-bold text-muted-foreground">
-          <a href="#contact" className="hover:text-foreground">
-            צור קשר
-          </a>
-          <a href="#privacy" className="hover:text-foreground">
+          <a href={privacyHref} className="hover:text-foreground">
             מדיניות פרטיות
           </a>
-          <a href="#accessibility" className="hover:text-foreground">
-            נגישות
+          <a href={accessibilityHref} className="hover:text-foreground">
+            הצהרת נגישות
+          </a>
+          <a href="#contact" className="hover:text-foreground">
+            יצירת קשר
           </a>
         </nav>
       </div>
@@ -638,7 +623,7 @@ export function DpoWebsite() {
         <Expertise />
         <RiskEducation />
         <Assessment />
-        <Proof />
+        <ClientTypes />
         <Contact />
       </main>
       <Footer />

@@ -67,7 +67,7 @@ export default {
       },
       boxShadow: {
         soft: "0 20px 60px -30px rgb(15 23 42 / 0.35)",
-        lift: "0 18px 45px -28px rgb(15 118 110 / 0.45)",
+        lift: "0 18px 45px -28px rgb(15 95 145 / 0.42)",
       },
     },
   },

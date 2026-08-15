@@ -14,18 +14,18 @@ Create the first static public website for a Hebrew RTL DPO / privacy-law / cybe
 
 ## Page Sections
 
-- Hero with clear DPO/privacy/cyber-compliance positioning.
+- Hero with AMLAWTECH, אמל בראנסי, DPO positioning, and תיקון 13 relevance.
 - Services section.
 - About/expertise section.
 - Compliance-risk education section.
 - Self-assessment questions.
-- Proof/testimonials placeholder with original copy only.
-- Contact/lead form shell.
+- Real client-type section without invented testimonials.
+- Contact section without a fake form until real delivery/contact details are configured.
 - Footer with contact, privacy, and accessibility links.
 
-## Static Form Behavior
+## Contact Behavior
 
-The contact form is intentionally static in this bootstrap. It prevents default submission and shows a message that no information is sent. A future task can connect email, CRM, or a form backend after a deliberate privacy decision.
+The public page must not show a form that appears active but loses submissions. Until real contact details are provided, the contact area presents explicit placeholders. A future task can add mailto, WhatsApp, LinkedIn, or a real form backend after adding section 11 notice and consent copy.
 
 ## Acceptance Criteria
 
@@ -33,5 +33,5 @@ The contact form is intentionally static in this bootstrap. It prevents default 
 - Responsive desktop and mobile layout.
 - No copied reference-site copy or assets.
 - No Supabase, auth, database, CMS, or payments.
-- Visible form labels and LTR phone/email inputs.
-- Playwright coverage for rendering, CTA navigation, mobile menu, no horizontal overflow, form shell behavior, and visual screenshot sanity.
+- Real privacy policy and accessibility statement pages.
+- Playwright coverage for rendering, CTA navigation, mobile menu, no horizontal overflow, no testimonial placeholders, legal pages, and visual screenshot sanity.

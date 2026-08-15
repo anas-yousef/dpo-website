@@ -16,11 +16,11 @@ The site should feel like a modern privacy and cyber-compliance practice: calm, 
 
 - Warm off-white background for approachability.
 - Deep neutral foreground for authority.
-- Teal primary for privacy/security action.
+- Dark blue primary for the AMLAWTECH brand, DPO trust signal, and mobile browser chrome.
 - Brass accent for legal/professional warmth.
 - Coral accent used sparingly for contrast.
 
-This avoids a one-note navy or purple palette while still feeling credible.
+Warm neutrals, brass, and small coral accents keep the dark-blue brand from becoming a one-note palette.
 
 ## Typography
 
@@ -31,14 +31,14 @@ Use Hebrew-friendly sans-serif typography with generous line height. Reserve lar
 - Primary hero CTA: consultation/diagnosis.
 - Secondary hero CTA: services.
 - Mid-page CTA: self-assessment.
-- Bottom CTA: lead form.
+- Bottom CTA: contact details or a real connected contact channel.
 
 Repeated CTAs should appear after a value shift, not after every small block.
 
 ## Layout
 
 - Header is sticky with desktop nav and a compact mobile menu.
-- Hero uses original visual media, not a copied portrait.
+- Hero uses the provided AMLAWTECH/DPO portrait as a first-viewport identity signal.
 - Service cards are individual repeated items, not nested decorative panels.
 - Education section uses a dark contrast band to create pacing.
 - Mobile layout reflows genuinely and must not keep a fixed desktop canvas.
@@ -46,8 +46,7 @@ Repeated CTAs should appear after a value shift, not after every small block.
 ## Accessibility
 
 - `html` declares `lang="he"` and `dir="rtl"`.
-- Form controls use visible labels.
-- Email and phone fields force LTR direction.
+- Contact must not show a fake active form. Add a real form only with delivery, section 11 notice, and explicit consent.
 - Focus states stay visible.
 - Touch targets are at least 44px high.
 - The page includes a skip link.

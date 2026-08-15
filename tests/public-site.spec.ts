@@ -7,12 +7,13 @@ test.describe("Hebrew DPO public website", () => {
     await expect(page).toHaveTitle(/DPO/);
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "ממונה הגנת פרטיות",
+      "אמל בראנסי",
     );
+    await expect(page.getByText("תיקון 13 נכנס לתוקף")).toBeVisible();
     await expect
       .poll(async () =>
         page
-          .getByAltText("עמדת עבודה משפטית-טכנולוגית עם לוח בקרה לאבטחת מידע ופרטיות")
+          .getByAltText("אמל בראנסי, ממונה הגנת פרטיות DPO")
           .evaluate((image) => (image as HTMLImageElement).naturalWidth),
       )
       .toBeGreaterThan(0);
@@ -22,6 +23,7 @@ test.describe("Hebrew DPO public website", () => {
       "expertise",
       "risk",
       "assessment",
+      "clients",
       "contact",
     ]) {
       await expect(page.locator(`#${sectionId}`)).toBeVisible();
@@ -45,18 +47,29 @@ test.describe("Hebrew DPO public website", () => {
     await expect(page.getByRole("navigation", { name: "ניווט מובייל" })).toBeVisible();
   });
 
-  test("lead form shell gives static-site feedback", async ({ page }) => {
+  test("contact area avoids a dead form and legal links resolve", async ({ page }) => {
     await page.goto("/");
     await page.locator("#contact").scrollIntoViewIfNeeded();
 
-    await page.getByLabel("שם מלא").fill("נועה כהן");
-    await page.getByLabel("ארגון ותפקיד").fill("מנהלת תפעול");
-    await page.getByLabel("דוא״ל").fill("noa@example.com");
-    await page.getByLabel("טלפון").fill("+972501234567");
-    await page.getByLabel("במה כדאי להתמקד בשיחה?").fill("מיפוי פרטיות ראשוני");
-    await page.getByRole("button", { name: /שליחת פנייה/ }).click();
+    await expect(page.locator("form")).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "פרטי קשר" })).toBeVisible();
+    await expect(page.locator("#contact").getByText("דוא״ל", { exact: true })).toBeVisible();
+    await expect(page.getByText("להשלים").first()).toBeVisible();
 
-    await expect(page.getByText("הטופס מוכן לחיבור")).toBeVisible();
+    await page.getByRole("link", { name: "מדיניות פרטיות" }).click();
+    await expect(page.getByRole("heading", { name: "מדיניות פרטיות" })).toBeVisible();
+
+    await page.goto("/");
+    await page.getByRole("link", { name: "הצהרת נגישות" }).click();
+    await expect(page.getByRole("heading", { name: "הצהרת נגישות" })).toBeVisible();
+  });
+
+  test("does not publish testimonial placeholders", async ({ page }) => {
+    await page.goto("/");
+
+    await expect(page.getByText("מקום שמור לעדויות")).toHaveCount(0);
+    await expect(page.getByText("הוכחה חברתית")).toHaveCount(0);
+    await expect(page.getByText("עם מי אני עובדת")).toBeVisible();
   });
 
   test("captures nonblank visual smoke screenshots", async ({ page }) => {

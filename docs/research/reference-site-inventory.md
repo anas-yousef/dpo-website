@@ -99,8 +99,8 @@ Observed asset categories only; no assets were copied:
 - Third-party accessibility widget assets.
 - Cookie/consent management banner.
 
-The new site uses one original generated hero image stored at `public/images/dpo-compliance-hero.png` and lucide-react icons.
+The new site now uses the DPO-provided portrait at `public/images/amal-bransi-dpo.jpg`, a generated branded social preview at `public/images/amlawtech-og.png`, and lucide-react icons. No reference-site assets are used.
 
 ## Legal And Copyright Note
 
-The reference site was inspected only for structure, flow, CTA placement, visual pacing, and service themes. This repo does not copy its exact text, photographs, testimonials, logo, contact details, legal disclaimers, or brand identity. All public-facing copy in the new implementation is original placeholder/site copy for this DPO website.
+The reference site was inspected only for structure, flow, CTA placement, visual pacing, and service themes. This repo does not copy its exact text, photographs, testimonials, logo, contact details, legal disclaimers, or brand identity. The site must not publish invented testimonials or fake contact flows.
