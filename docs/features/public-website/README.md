@@ -20,12 +20,12 @@ Create the first static public website for a Hebrew RTL DPO / privacy-law / cybe
 - Compliance-risk education section.
 - Self-assessment questions.
 - Real client-type section without invented testimonials.
-- Contact section without a fake form until real delivery/contact details are configured.
+- Contact section with email, phone, and LinkedIn links, and no fake form.
 - Footer with contact, privacy, and accessibility links.
 
 ## Contact Behavior
 
-The public page must not show a form that appears active but loses submissions. Until real contact details are provided, the contact area presents explicit placeholders. A future task can add mailto, WhatsApp, LinkedIn, or a real form backend after adding section 11 notice and consent copy.
+The public page must not show a form that appears active but loses submissions. Contact is handled through direct email, phone, and LinkedIn links. A future task can add a real form backend only after adding section 11 notice and consent copy.
 
 ## Acceptance Criteria
 

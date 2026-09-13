@@ -118,17 +118,20 @@ const clientTypes = [
 const contactDetails = [
   {
     label: "דוא״ל",
-    value: "להשלים",
+    value: "A@aklaw.ai",
+    href: "mailto:A@aklaw.ai",
     icon: Mail,
   },
   {
     label: "טלפון",
-    value: "להשלים",
+    value: "054-242-9950",
+    href: "tel:+972542429950",
     icon: Phone,
   },
   {
     label: "לינקדאין",
-    value: "להשלים",
+    value: "Amal Kamal Baransi",
+    href: "https://www.linkedin.com/in/amal-kamal-baransi-747158154/",
     icon: MessageSquare,
   },
 ];
@@ -141,7 +144,7 @@ function SectionIntro({
 }: {
   eyebrow: string;
   title: string;
-  description: string;
+  description?: string;
   align?: "center" | "start";
 }) {
   return (
@@ -157,7 +160,9 @@ function SectionIntro({
       <h2 className="text-balance text-3xl font-extrabold leading-tight text-foreground sm:text-4xl">
         {title}
       </h2>
-      <p className="text-lg leading-8 text-muted-foreground">{description}</p>
+      {description ? (
+        <p className="text-lg leading-8 text-muted-foreground">{description}</p>
+      ) : null}
     </div>
   );
 }
@@ -256,13 +261,12 @@ function Hero() {
               אמל בראנסי | ממונה הגנת פרטיות (DPO)
             </h1>
             <p className="max-w-2xl text-xl font-bold leading-9 text-primary">
-              ליווי רשויות מקומיות, גופים ציבוריים וארגונים לעמידה בתיקון 13
-              לחוק הגנת הפרטיות
+              ליווי ארגונים לעמידה בתיקון 13 לחוק הגנת הפרטיות
             </p>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
               תיקון 13 נכנס לתוקף והרחיב את חובות הארגון ואת סמכויות האכיפה של
               רשות הגנת הפרטיות. אני מלווה ארגונים משלב המיפוי ועד תיק ציות
-              מסודר שמחזיק גם ביום ביקורת — בעברית ובערבית.
+              מסודר שמחזיק גם ביום ביקורת.
             </p>
           </div>
 
@@ -330,7 +334,6 @@ function Services() {
         <SectionIntro
           eyebrow="תחומי ליווי"
           title="כל שכבת הציות, בלי להעמיס על הארגון"
-          description="האתר בנוי סביב שירותים שמנהלים באמת צריכים: מיפוי סיכונים, אחריות ברורה, מסמכים שאפשר להשתמש בהם והדרכה שמצמצמת טעויות."
         />
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -490,7 +493,7 @@ function ClientTypes() {
         <SectionIntro
           eyebrow="עם מי אני עובדת"
           title="ליווי לארגונים שמנהלים מידע רגיש, ציבורי או תפעולי"
-          description="ליווי שוטף של רשויות מקומיות, תאגידים עירוניים, גופים ציבוריים ועסקים פרטיים — מארגונים המנהלים מאגרי מידע רגישים ועד גופים המחזיקים במידע עבור צדדים שלישיים."
+          description="ליווי שוטף של רשויות מקומיות, תאגידים עירוניים, גופים ציבוריים, בתי חולים ומרפאות ועסקים פרטיים — מארגונים המנהלים מאגרי מידע רגישים ועד גופים המחזיקים במידע עבור צדדים שלישיים."
         />
 
         <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -537,8 +540,9 @@ function Contact() {
           <CardHeader>
             <h3 className="text-2xl font-extrabold">פרטי קשר</h3>
             <p className="leading-7 text-muted-foreground">
-              פרטי ההתקשרות יושלמו לפני העלייה הסופית. אין באתר טופס פעיל, כדי
-              לא ליצור רושם של שליחת פנייה ולא לאסוף מידע ללא הודעת יידוע.
+              אין באתר טופס פעיל, כדי לא ליצור רושם של שליחת פנייה ולא לאסוף
+              מידע ללא הודעת יידוע. אפשר לפנות ישירות בדוא״ל, בטלפון או דרך
+              לינקדאין.
             </p>
           </CardHeader>
           <CardContent className="space-y-5">
@@ -555,22 +559,22 @@ function Contact() {
                       <Icon className="size-5 text-primary" aria-hidden="true" />
                       <span>{item.label}</span>
                     </div>
-                    <span className="font-extrabold text-muted-foreground">
+                    <a
+                      href={item.href}
+                      className="font-extrabold text-primary underline-offset-4 hover:underline"
+                      dir={
+                        item.label === "דוא״ל" || item.label === "טלפון"
+                          ? "ltr"
+                          : undefined
+                      }
+                      target={item.label === "לינקדאין" ? "_blank" : undefined}
+                      rel={item.label === "לינקדאין" ? "noreferrer" : undefined}
+                    >
                       {item.value}
-                    </span>
+                    </a>
                   </div>
                 );
               })}
-            </div>
-
-            <div className="rounded-lg border border-primary/20 bg-primary/5 p-5">
-              <p className="font-extrabold text-primary">
-                לאחר קבלת פרטי הקשר
-              </p>
-              <p className="mt-2 leading-7 text-muted-foreground">
-                אפשר להחליף את הכרטיסים בכפתורי דוא״ל, וואטסאפ ולינקדאין, או
-                לחבר טופס אמיתי עם הודעת יידוע לפי סעיף 11 לחוק ותיבת הסכמה.
-              </p>
             </div>
           </CardContent>
         </Card>

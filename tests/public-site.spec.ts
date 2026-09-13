@@ -53,8 +53,18 @@ test.describe("Hebrew DPO public website", () => {
 
     await expect(page.locator("form")).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "פרטי קשר" })).toBeVisible();
-    await expect(page.locator("#contact").getByText("דוא״ל", { exact: true })).toBeVisible();
-    await expect(page.getByText("להשלים").first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "A@aklaw.ai" })).toHaveAttribute(
+      "href",
+      "mailto:A@aklaw.ai",
+    );
+    await expect(page.getByRole("link", { name: "054-242-9950" })).toHaveAttribute(
+      "href",
+      "tel:+972542429950",
+    );
+    await expect(page.getByRole("link", { name: "Amal Kamal Baransi" })).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/amal-kamal-baransi-747158154/",
+    );
 
     await page.getByRole("link", { name: "מדיניות פרטיות" }).click();
     await expect(page.getByRole("heading", { name: "מדיניות פרטיות" })).toBeVisible();
