@@ -17,6 +17,9 @@ test.describe("Hebrew DPO public website", () => {
           .evaluate((image) => (image as HTMLImageElement).naturalWidth),
       )
       .toBeGreaterThan(0);
+    await expect(page.locator("#top").getByText("מענה ראשוני")).toHaveCount(0);
+    await expect(page.locator("#top").getByText("עברית וערבית")).toHaveCount(0);
+    await expect(page.locator("#top").getByText("רשויות מקומיות", { exact: true })).toHaveCount(0);
 
     for (const sectionId of [
       "services",

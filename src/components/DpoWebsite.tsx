@@ -282,23 +282,6 @@ function Hero() {
             </Button>
           </div>
 
-          <dl className="grid gap-4 sm:grid-cols-3">
-            {[
-              ["מענה ראשוני", "תוך 48 שעות"],
-              ["עברית וערבית", "ליווי דו-לשוני"],
-              ["רשויות מקומיות", "תאגידים וגופים ציבוריים"],
-            ].map(([value, label]) => (
-              <div
-                key={value}
-                className="rounded-lg border border-border bg-background p-4"
-              >
-                <dt className="text-xl font-extrabold text-primary">{value}</dt>
-                <dd className="mt-1 text-sm font-semibold text-muted-foreground">
-                  {label}
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
         <div className="relative mx-auto w-full max-w-[520px]">
